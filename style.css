@@ -1,0 +1,624 @@
+/* --- TEMA MOTORU (Her müşteri için burayı değiştireceksin) --- */
+/* --- PREMIUM DARK TEMA MOTORU --- */
+:root {
+    --primary-color: #d4af37;
+    /* Zarif bir altın rengi (Lüks hissiyatı için) */
+    --bg-color: #121212;
+    /* Derin, mat siyah arka plan */
+    --card-bg: #1c1c1c;
+    /* Ürün kartları için antrasit gri */
+    --text-main: #f5f5f5;
+    /* Göz yormayan kırık beyaz metinler */
+    --text-muted: #9e9e9e;
+    /* Açıklamalar için şık bir gümüş gri */
+    --radius: 12px;
+    /* Daha ciddiyet katan hafif keskin köşeler */
+}
+
+/* Temel Sıfırlamalar ve Mobil Optimizasyon */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    /* Yeni VIP Fontumuz */
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background-image: url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1600&q=80');
+    /* Yüksek çözünürlüklü fotoğraf */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    /* Fotoğraf sabit kalır, içerik kayar */
+    background-color: var(--bg-color);
+    /* Fotoğraf yüklenmezse diye yedek renk */
+    color: var(--text-main);
+    padding-bottom: 50px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Header Tasarımı */
+.header {
+    background: transparent;
+    /* Header'ın kendi arka planını kaldır */
+    padding: 100px 20px 40px;
+    /* Daha fazla üst boşluk (safari vb. için) */
+    text-align: center;
+    border-radius: 0;
+    box-shadow: none;
+    /* Gölgeyi kaldır */
+}
+
+.brand-name {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.brand-desc {
+    font-size: 14px;
+    opacity: 0.9;
+    margin-top: 5px;
+}
+
+/* Yapışkan Menüye "Buzlu Cam" (Glassmorphism) Efekti */
+.category-nav {
+    display: flex;
+    overflow-x: auto;
+    padding: 0 20px 15px 20px;
+    /* Sadece alt ve yan boşluklar */
+    gap: 10px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.category-nav::-webkit-scrollbar {
+    display: none;
+}
+
+/* Kategori Butonları */
+.category-btn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 8px 20px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-muted);
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.category-btn.active {
+    background: var(--primary-color);
+    color: #121212;
+    /* Altın rengi butonun üstünde siyah yazı efsane durur */
+    border-color: var(--primary-color);
+    font-weight: 700;
+}
+
+/* Ürün Kartları Container */
+.menu-container {
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Tekil Ürün Kartı Tasarımı */
+.menu-item {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+    transition: transform 0.2s ease;
+}
+
+.menu-item:active {
+    transform: scale(0.98);
+}
+
+.item-content {
+    flex: 1;
+    padding-right: 15px;
+}
+
+.item-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.item-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.4;
+    margin-bottom: 8px;
+}
+
+.item-price {
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--primary-color);
+}
+
+/* Opsiyonel: Ürün Görseli */
+.item-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    background-size: cover;
+    background-position: center;
+    flex-shrink: 0;
+}
+
+/* Animasyon Sınıfı (style.css'in en altına ekle) */
+.menu-item {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.menu-item.hidden {
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none;
+}
+
+
+
+.logo-container {
+    position: relative;
+    z-index: 2;
+    /* Yazılar karanlık temanın üstünde kalsın */
+}
+
+/* Ürün İçi Başlık ve Etiket Düzeni */
+.title-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+
+/* Etiketler (Badge) */
+.badge {
+    font-size: 10px;
+    font-weight: 800;
+    padding: 3px 6px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.badge-popular {
+    background-color: #ff9f1c;
+    color: white;
+}
+
+.badge-new {
+    background-color: #2ec4b6;
+    color: white;
+}
+
+/* Footer ve Harita Alanı */
+.footer {
+    background-color: var(--bg-color);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 15px;
+}
+
+.instagram-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    color: white;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 15px rgba(220, 39, 67, 0.3);
+    transition: transform 0.2s;
+}
+
+.instagram-btn:active {
+    transform: scale(0.95);
+}
+
+.map-container {
+    width: 100%;
+    height: 200px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.copyright {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+
+.action-btn {
+    background: var(--card-bg);
+    color: var(--text-main);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.action-btn i {
+    color: #3b82f6;
+    /* Wi-Fi ikonu mavi olsun */
+}
+
+.action-btn:active {
+    transform: scale(0.95);
+}
+
+/* Modal (Açılır Pencere) Tasarımı */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-overlay.active .modal-content {
+    transform: translateY(0);
+}
+
+.modal-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.modal-header h3 {
+    font-size: 18px;
+    color: var(--text-main);
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+/* Şifre Kutusu ve Kopyalama */
+.password-box {
+    background: var(--bg-color);
+    border: 1px dashed rgba(255, 255, 255, 0.2);
+    color: var(--primary-color);
+}
+
+.password-box span {
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+.copy-btn {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.copy-btn:active {
+    transform: scale(0.90);
+}
+
+.copy-feedback {
+    font-size: 12px;
+    color: #10b981;
+    /* Başarı yeşili */
+    text-align: center;
+    margin-top: 8px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.copy-feedback.show {
+    opacity: 1;
+}
+
+/* --- AÇILIŞ EKRANI TASARIMI --- */
+.intro-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* Mobilde adres çubuğunu hesaba katarak gerçek tam ekran (100dvh) */
+    height: 100vh;
+    height: 100dvh;
+    z-index: 2000;
+    /* Her şeyin üstünde dursun */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    /* Ekranın yukarı kayma animasyonu */
+    transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
+}
+
+/* Butona basıldığında eklenecek gizlenme sınıfı */
+.intro-screen.hidden {
+    transform: translateY(-100%);
+    /* Ekranı tamamen yukarı kaydır */
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Arka Plan ve Yavaş Yakınlaşma (Ken Burns) Animasyonu */
+.intro-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    animation: slowZoom 15s linear infinite alternate;
+    z-index: 1;
+}
+
+@keyframes slowZoom {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.15);
+    }
+}
+
+/* Karartma (Overlay) */
+.intro-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.3) 100%);
+    z-index: 2;
+}
+
+/* İçeriklerin Aşağıdan Yukarı Kayarak Gelmesi */
+.intro-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    color: white;
+    padding: 0 30px;
+    animation: fadeInUp 1.2s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.intro-badge {
+    font-size: 32px;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.intro-title {
+    font-size: 42px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+.intro-about {
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* Geçiş Butonu */
+.view-menu-btn {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 16px 36px;
+    font-size: 17px;
+    font-weight: 600;
+    border-radius: 30px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    /* Butonun rengine göre parlayan gölge */
+    box-shadow: 0 10px 25px rgba(230, 57, 70, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.view-menu-btn:active {
+    transform: scale(0.95);
+    /* Butonun rengine göre parlayan gölge (Altın Rengi olarak güncellendi) */
+    box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
+}
+
+/* --- YENİ NESİL TOP BAR (Buzlu Cam) --- */
+.top-bar-container {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    /* Cam efekti artık tüm üst barı kapsıyor */
+    background: rgba(18, 18, 18, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 20px;
+    /* Mobilde üstten nefes alma boşluğu */
+    margin-bottom: 20px;
+}
+
+/* Logo ve İkonun Olduğu Satır */
+.top-brand-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    margin-bottom: 15px;
+}
+
+/* Zarif Logo Tasarımı */
+.nav-brand {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--primary-color);
+    /* Altın rengimiz */
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    /* İkonlar arası boşluk */
+}
+
+/* Sağ Üstteki Wi-Fi (veya diğer) İkonlar */
+.nav-action-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-main);
+    font-size: 18px;
+    cursor: pointer;
+    text-decoration: none;
+    /* Link çizgilerini kaldırır */
+    transition: transform 0.2s, color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-action-btn:active {
+    transform: scale(0.85);
+}
+
+.nav-action-btn:hover {
+    color: var(--primary-color);
+}
+
+.instagram-icon:hover {
+    color: #E1306C;
+}
+
+/* Orijinal Instagram Pembesi/Moru */
+.yemeksepeti-icon:hover {
+    color: #ea004b;
+}
+
+/* Yemeksepeti Pembesi */
+.trendyol-icon:hover {
+    color: #f27a1a;
+}
+
+/* Trendyol Turuncusu */
+.search-container {
+    display: none;
+    /* Başlangıçta gizli */
+    padding: 0 20px 15px 20px;
+    animation: slideDown 0.3s ease forwards;
+}
+
+.search-container.active {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.search-input {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.08);
+    /* Cam efektiyle uyumlu yarı saydam kutu */
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--text-main);
+    padding: 12px 18px;
+    border-radius: 25px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.search-input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.search-input:focus {
+    border-color: var(--primary-color);
+}
+
+.close-search-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 20px;
+    cursor: pointer;
+    padding: 5px;
+}
